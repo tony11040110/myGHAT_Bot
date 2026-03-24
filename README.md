@@ -21,12 +21,16 @@ A ChatGPT-like chatbot web app built with Flask + Groq + SQLite.
 1. Install dependencies:
    ```bash
    pip install -r requirements.txt
+   ```
 2.Create .env:
-
+   ```bash
    GROQ_API_KEY=your_key_here
-
+   ```
 3.Run:
-
+   ```bash
    python app.py
+   ```
 4.Open:
+   ```bash
    http://127.0.0.1:5000
+   ```
