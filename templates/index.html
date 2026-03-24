@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My ChatGPT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <button class="new-chat-btn" id="newChatBtn">+ New chat</button>
+
+        <div class="chat-history" id="chatHistory"></div>
+
+        <div class="settings-block">
+          <label>Files</label>
+          <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div class="settings-block">
+          <label for="model">Model</label>
+          <select id="model">
+            <option value="openai/gpt-oss-20b" selected>openai/gpt-oss-20b</option>
+          </select>
+        </div>
+
+        <div class="settings-block">
+          <label for="systemPrompt">System Prompt</label>
+          <textarea id="systemPrompt" rows="5">You are a helpful assistant.</textarea>
+        </div>
+
+        <div class="settings-block">
+          <label for="temperature">Temperature <span id="tempValue">0.7</span></label>
+          <input id="temperature" type="range" min="0" max="2" step="0.1" value="0.7" />
+        </div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="profile-box">
+          <div class="avatar">U</div>
+          <div class="profile-text">
+            <div class="profile-name">User</div>
+            <div class="profile-plan">Flask + Groq + SQLite</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title">My ChatGPT</div>
+      </header>
+
+      <section class="chat-area" id="chatArea">
+        <div class="welcome-screen" id="welcomeScreen">
+          <h1>How can I help you today?</h1>
+          <div class="suggestion-grid">
+            <button class="suggestion-card">幫我寫一段自我介紹</button>
+            <button class="suggestion-card">解釋一下 RISC-V 是什麼</button>
+            <button class="suggestion-card">幫我整理讀書計畫</button>
+            <button class="suggestion-card">請用英文潤飾這段文字</button>
+          </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <footer class="input-shell">
+        <div class="input-wrapper">
+          <textarea
+            id="userInput"
+            placeholder="Message My ChatGPT..."
+            rows="1"
+          ></textarea>
+
+          <div class="input-actions">
+            <label for="fileInput" class="file-btn">+</label>
+            <input id="fileInput" type="file" hidden />
+            <button id="sendBtn" class="send-btn">↑</button>
+          </div>
+        </div>
+        <div class="input-note">Local chat UI with SQLite history and file upload support.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
